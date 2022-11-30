@@ -1,5 +1,5 @@
-ARG from=discourse/base
-ARG tag=build_slim
+ARG from=omarabdul3ziz/discourse
+ARG tag=base
 
 FROM $from:$tag
 
