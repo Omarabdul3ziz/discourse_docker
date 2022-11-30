@@ -56,6 +56,7 @@ run:
         exec 2>&1
         # redis
         # postgres
+        sv start 3bot
         cd $home
         chown -R discourse:www-data /shared/log/rails
         LD_PRELOAD=$RUBY_ALLOCATOR HOME=/home/discourse USER=discourse exec thpoff chpst -u discourse:www-data -U discourse:www-data bundle exec config/unicorn_launcher -E production -c config/unicorn.conf.rb
@@ -67,6 +68,16 @@ run:
         #!/bin/sh
         exec 2>&1
         exec /usr/sbin/nginx
+        
+  # For 3bot
+  - file:
+     path: /etc/service/3bot/run
+     chmod: "+x"
+     contents: |
+        #!/bin/sh
+        exec 2>&1
+        cd $home/3bot
+        exec uwsgi --socket 0.0.0.0:5000 --protocol=http -w app:app --daemonize ../log/3bot
 
   - file:
      path: /etc/runit/3.d/01-nginx
@@ -88,10 +99,10 @@ run:
       cmd:
         - git reset --hard
         - git clean -f
-        - git remote set-branches --add origin main
-        - git remote set-branches origin $version
-        - git fetch --depth 1 origin $version
-        - git checkout $version
+        # - git remote set-branches --add origin main
+        # - git remote set-branches origin $version
+        # - git fetch --depth 1 origin $version
+        # - git checkout $version
         - mkdir -p tmp
         - chown discourse:www-data tmp
         - mkdir -p tmp/pids
