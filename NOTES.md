@@ -24,8 +24,9 @@ You either can use the `./discourse-setup` script to walk you through the config
    - a valid domain name refers to `host-ip:80`
    - and running smtp server. You can try [mailtrap](https://mailtrap.io/) for testing.
 3. in the `./launcher` edit the image to be as the tag you defined in the `auto_rebuild.rb`
+4. `./launcher rebuild app` app is the name of your yml file in containers. 
 
-the server is really big so it will take some time to be ready.
+Now, find the server at the domain in the `app.yml`. the server is really big so it will take some time to be ready.
 
 ### Edits
 
