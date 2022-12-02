@@ -1,3 +1,14 @@
+<a href="https://forums.threefold.io/"><img src=
+"https://forums.threefold.io/images/discourse-logo-sketch.png"></a>
+
+# Forum Docker image
+
+Threefold Forum is a fork from [discourse_docker](https://github.com/discourse/discourse_docker) with threebot server implementation that enables [threefold connect authenticator](https://github.com/threefoldtech/threefold_connect).
+
+Install an instance of TF_Forum easily with the [Playground](https://play.grid.tf/).
+
+Find the [Dev Notes](./NOTES.md) for the changes in the fork.
+
 # Discourse Docker images
 
 ## About

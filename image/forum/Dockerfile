@@ -119,7 +119,7 @@ RUN useradd discourse -s /bin/bash -m -U  &&\
     sudo -u discourse git clone --depth 1 https://github.com/Omarabdul3ziz/tf-forum3.git /var/www/discourse &&\
     sudo -u discourse git -C /var/www/discourse remote set-branches --add origin tests-passed
 
-# release
+# release part
 RUN apt-get update &&\
     apt-get -y install libsodium-dev
 
@@ -133,6 +133,7 @@ RUN cd /var/www/discourse &&\
     bundle exec rake maxminddb:get &&\
     find /var/www/discourse/vendor/bundle -name tmp -type d -exec rm -rf {} +
 
+# threebot part
 RUN apt update &&\
     apt -y install python3-pip vim net-tools tmux &&\
     apt -y install libglib2.0-dev libcairo2 libcairo2-dev python3-apt libgirepository1.0-dev &&\
