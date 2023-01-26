@@ -164,16 +164,16 @@ run:
         - gem install bundler --conservative -v $(awk '/BUNDLED WITH/ { getline; gsub(/ /,""); print $0 }' Gemfile.lock)
         - find $home ! -user discourse -exec chown discourse {} \+
 
-  - exec:
-      cd: $home
-      cmd:
-        - "[ ! -d 'node_modules' ] || su discourse -c 'yarn install --production --frozen-lockfile && yarn cache clean'"
+  # - exec:
+  #     cd: $home
+  #     cmd:
+  #       - "[ ! -d 'node_modules' ] || su discourse -c 'yarn install --production --frozen-lockfile && yarn cache clean'"
 
-  - exec:
-      cd: $home
-      hook: bundle_exec
-      cmd:
-        - su discourse -c 'bundle install --deployment --retry 3 --jobs 4 --verbose --without test development'
+  # - exec:
+  #     cd: $home
+  #     hook: bundle_exec
+  #     cmd:
+  #       - su discourse -c 'bundle install --deployment --retry 3 --jobs 4 --verbose --without test development'
 
   - exec:
       cd: $home
